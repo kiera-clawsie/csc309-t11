@@ -108,7 +108,7 @@ export const AuthProvider = ({ children }) => {
         });
         const body = await response.json();
         if (response.status === 201) {
-            navigate("/");
+            navigate("/success");
             return;
         } else {
             return body.message;
