@@ -33,8 +33,6 @@ export const AuthProvider = ({ children }) => {
                 if (response.status === 200) {
                     setUser(body.user);
                     return;
-                } else {
-                    console.log(`UseEffect gives status ${response.status} with message ${body.message}`);
                 }
             }
             setUser(null);
@@ -86,14 +84,10 @@ export const AuthProvider = ({ children }) => {
                 navigate("/profile");
                 return;
             } else {
-                const user_error = `Login user fetch gives status ${user_response.status} with message ${user_body.message}`;
-                console.log(user_error);
-                return user_error;
+                return user_body.message;
             }
         } else {
-            const token_error = `Login token fetch gives status ${token_response.status} with message ${token_body.message}`;
-            console.log(token_error);
-            return token_error;
+            return token_body.message;
         }
     };
 
@@ -117,9 +111,7 @@ export const AuthProvider = ({ children }) => {
             navigate("/");
             return;
         } else {
-            const error = `Register gives status ${response.status} with message ${body.message}`;
-            console.log(error);
-            return error;
+            return body.message;
         }
     };
 
